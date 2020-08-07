@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Checkout-git"){
             steps{
-                git branch: 'dev2', url: 'https://github.com/gbelot2003/appbackend.git'
+                git url: 'https://github.com/gbelot2003/appbackend.git'
             }
         }
         stage("Creando entorno General"){
