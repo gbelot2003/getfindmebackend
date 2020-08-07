@@ -1,0 +1,76 @@
+pipeline{
+    agent any
+    stages{
+        stage("Checkout-git"){
+            steps{
+                git branch: 'dev2', url: 'https://github.com/gbelot2003/appbackend.git'
+            }
+            post{
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+
+        stage('Creando entorno General'){
+            steps{
+                sh '''
+					bash docker-compose up -d
+				'''
+            }
+            steps{
+                sh '''
+                    bash docker-compose run --rm composer install
+                '''
+            }
+            steps {
+                sh '''
+                    docker-compose run --rm artisan key:generate
+                '''    
+            }
+            steps {
+                sh '''
+                    docker-compose run --rm artisan passport:install
+                '''
+            }
+            post{
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+        stage('Corriendo Migraciones'){
+             steps{
+                sh '''
+                    docker-compose run --rm artisan migrate --seed
+                ''' 
+             }
+                   
+        }
+        stage('Desconectando servidor'){
+            steps{
+                sh '''
+                    docker-compose down
+                '''
+            }
+                
+        }
+    }
+    post{
+        always{
+            echo "========Done========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
