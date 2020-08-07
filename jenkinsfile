@@ -6,27 +6,17 @@ pipeline{
                 git url: 'https://github.com/gbelot2003/appbackend.git'
             }
         }
-        stage("Creando entorno General"){
+        stage("Creando entorno Doker"){
             steps{
                 sh '''
-					bash docker-compose up -d 
-                    && docker-compose run --rm composer install 
-                    && docker-compose run --rm artisan key:generate
-                    &&  docker-compose run --rm artisan passport:install
+					bash docker-compose up -d
 				'''
             }
         }
-        stage("Corriendo Migraciones"){
+        stage("Cerrando entorno Docker"){
             steps{
                 sh '''
-                    docker-compose run --rm artisan migrate --seed
-                ''' 
-            }
-        }
-        stage("Desconectando servidor"){
-            steps{
-                sh '''
-                    docker-compose down
+                    bash docker-compose down 
                 '''
             }
         }
