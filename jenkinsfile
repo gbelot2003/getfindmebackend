@@ -18,6 +18,7 @@ pipeline{
         }
         stage("instalando llave y passport"){
             steps{
+                sh "cp ./src/.env.example ./src/.env"
                 sh "docker-compose run --rm artisan key:generate"
                 sh "docker-compose run --rm artisan passport:install"
             }
