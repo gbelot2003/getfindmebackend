@@ -6,7 +6,7 @@ networks:
 services:
   site:
     image: nginx:latest
-    container_name: lnginx
+    container_name: appnginx
     ports:
       - '80:80'
     volumes:
@@ -20,7 +20,7 @@ services:
 
   mysql:
     image: mysql:5.7.29
-    container_name: lmysql
+    container_name: appmysql
     restart: unless-stopped
     tty: true
     ports:
@@ -39,7 +39,7 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
-    container_name: lphp
+    container_name: appphp
     volumes:
       - ./src:/var/www/html
     ports:
@@ -49,7 +49,7 @@ services:
 
   composer:
     image: composer:latest
-    container_name: composer
+    container_name: appcomposer
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -60,7 +60,7 @@ services:
 
   npm:
     image: node:13.7
-    container_name: npm
+    container_name: appnpm
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -70,7 +70,7 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
-    container_name: artisan
+    container_name: appartisan
     volumes:
       - ./src:/var/www/html
     depends_on:
