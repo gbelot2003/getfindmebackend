@@ -46,6 +46,8 @@ pipeline{
         }
         success{
             echo "========pipeline executed successfully ========"
+            git merge origin/stage
+
         }
         failure{
             echo "========pipeline execution failed========"
