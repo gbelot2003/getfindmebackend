@@ -37,7 +37,7 @@ pipeline{
         stage("Cerrando Entorno Docker"){
             steps{
                 sh "docker-compose down"
-                git merge origin/stage
+                git merge origin/master
             }
         }
     }
