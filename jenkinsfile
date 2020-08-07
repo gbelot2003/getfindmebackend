@@ -9,23 +9,11 @@ pipeline{
         stage("Creando entorno General"){
             steps{
                 sh '''
-					bash docker-compose up -d
+					bash docker-compose up -d 
+                    && docker-compose run --rm composer install 
+                    && docker-compose run --rm artisan key:generate
+                    &&  docker-compose run --rm artisan passport:install
 				'''
-            }
-            steps{
-                sh '''
-                    bash docker-compose run --rm composer install
-                '''
-            }
-            steps {
-                sh '''
-                    docker-compose run --rm artisan key:generate
-                '''    
-            }
-            steps {
-                sh '''
-                    docker-compose run --rm artisan passport:install
-                '''
             }
         }
         stage("Corriendo Migraciones"){
