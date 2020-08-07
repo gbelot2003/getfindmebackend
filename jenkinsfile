@@ -8,16 +8,12 @@ pipeline{
         }
         stage("Creando entorno Doker"){
             steps{
-                sh '''
-					bash docker-compose up -d
-				'''
+                sh "docker-compose up -d"
             }
         }
         stage("Cerrando entorno Docker"){
             steps{
-                sh '''
-                    bash docker-compose down 
-                '''
+                sh "docker-compose down"
             }
         }
     }
