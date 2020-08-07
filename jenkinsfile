@@ -20,17 +20,17 @@ pipeline{
             steps{
                 sh "cp ./src/.env.example ./src/.env"
                 sh "docker-compose run --rm artisan key:generate"
-                sh "docker-compose run --rm artisan passport:install"
-            }
-        }
-        stage("Instalando y probando migraciones Mysql"){
-            steps{
-                sh "docker-compose run --rm artisan migrate --seed"
             }
         }
         stage("Ejecutando pruebas unitarias"){
             steps{
                 sh "docker-compose run --rm artisan test"
+            }
+        }
+        stage("Instalando y probando migraciones Mysql"){
+            steps{
+                sh "docker-compose run --rm artisan migrate --seed"
+                sh "docker-compose run --rm artisan passport:install"
             }
         }
         stage("Cerrando entorno Docker"){
