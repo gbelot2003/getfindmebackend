@@ -11,6 +11,27 @@ pipeline{
                 sh "docker-compose up -d"
             }
         }
+        stage("instalando paquetes Compose"){
+            steps{
+                sh "docker-compose run --rm composer install"
+            }
+        }
+        stage("instalando llave y passport"){
+            steps{
+                sh "docker-compose run --rm artisan key:generate"
+                sh "docker-compose run --rm artisan passport:install"
+            }
+        }
+        stage("Instalando y probando migraciones Mysql"){
+            steps{
+                sh "docker-compose run --rm artisan migrate --seed"
+            }
+        }
+        stage("Ejecutando pruebas unitarias"){
+            steps{
+                sh "docker-compose run --rm artisan test"
+            }
+        }
         stage("Cerrando entorno Docker"){
             steps{
                 sh "docker-compose down"
