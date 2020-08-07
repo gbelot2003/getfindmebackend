@@ -3,7 +3,8 @@ pipeline{
     stages{
         stage("Checkout-git"){
             steps{
-                git branch: 'dev2',  url: 'https://github.com/gbelot2003/appbackend.git'
+                git branch: 'dev2',  
+                url: 'ssh://git@github.com:gbelot2003/appbackend.git'
             }
         }
         stage("Creando entorno Docker"){
