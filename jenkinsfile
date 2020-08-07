@@ -14,7 +14,6 @@ pipeline{
                 }
             }
         }
-
         stage('Creando entorno General'){
             steps{
                 sh '''
@@ -46,12 +45,11 @@ pipeline{
             }
         }
         stage('Corriendo Migraciones'){
-             steps{
+            steps{
                 sh '''
                     docker-compose run --rm artisan migrate --seed
                 ''' 
-             }
-                   
+            }
         }
         stage('Desconectando servidor'){
             steps{
