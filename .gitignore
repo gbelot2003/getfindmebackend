@@ -2,3 +2,4 @@
 .idea
 mysql/*
 !mysql/.gitkeep
+./src/node_modules/*
