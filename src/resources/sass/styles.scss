@@ -46,3 +46,21 @@ body {
     border-radius: 5px;
     box-shadow: 2px 5px 20px #111;
 }
+
+.search-button {
+    background: #eee;
+    color: #dc3545;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #999;
+}
+
+.search-input:focus {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #dc3545;
+}

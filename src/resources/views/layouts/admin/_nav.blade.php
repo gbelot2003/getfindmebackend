@@ -13,7 +13,39 @@
                     </div>
                     @include('layouts.admin._navMenu')
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-9 py-2 ml-auto bg-dark fixed-top">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <h4 class="text-light text-uppercase mt-1">Dashboard</h4>
+                        </div>
+                        <div class="col-md-5">
+                            <form action="">
+                                <div class="input-group">
+                                    <input type="text" class="form-control text-white search-input" placeholder="Search....">
+                                    <button type="button" class="btn search-button"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-comments fa-lg text-muted"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-bell fa-lg text-muted"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ml-auto">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-sign-out-alt fa-lg text-danger"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
