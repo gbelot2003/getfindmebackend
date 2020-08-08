@@ -10909,3 +10909,8 @@ body {
   background-color: #eee;
 }
 
+.sidebar {
+  height: 100vh;
+  background-color: red;
+}
+
