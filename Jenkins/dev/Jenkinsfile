@@ -19,15 +19,16 @@ pipeline{
         }
         stage("Copiando .env y Corriendo migraciones"){
             steps{
-                @if(fileExists('./src/.env')){
-                    echo 'El archivo Existe'    
-                }else{
-                    sh "cp ./src/.env.example ./src/.env"
-                    sh "docker-compose run --rm artisan key:generate"
-                    sh "docker-compose run --rm artisan migrate --seed"
-                    sh "docker-compose run --rm artisan passport:install"
-                }
-                
+                script {
+                    if(fileExists('./src/.env')){
+                        echo 'El archivo Existe'    
+                    }else{
+                        sh "cp ./src/.env.example ./src/.env"
+                        sh "docker-compose run --rm artisan key:generate"
+                        sh "docker-compose run --rm artisan migrate --seed"
+                        sh "docker-compose run --rm artisan passport:install"
+                    }
+                }                
             }
         }
         stage("Ejecutando Pruebas Unitarias"){
