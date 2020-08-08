@@ -1,5 +1,5 @@
 pipeline{
-     agent {label: '35.222.132.71'}
+     agent {label '35.222.132.71'}
     stages{
         stage("Checkout-git"){
             steps{
@@ -19,9 +19,9 @@ pipeline{
         }
         stage("Copiando .env y Corriendo migraciones"){
             steps{
-                if (fileExists('./src/.env')){
+                if(fileExists('./src/.env')){
                     echo 'El archivo Existe'    
-                } else {
+                }else{
                     sh "cp ./src/.env.example ./src/.env"
                     sh "docker-compose run --rm artisan key:generate"
                     sh "docker-compose run --rm artisan migrate --seed"
