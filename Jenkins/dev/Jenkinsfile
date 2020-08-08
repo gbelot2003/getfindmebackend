@@ -1,7 +1,7 @@
 pipeline{
      agent {label '35.222.132.71'}
     stages{
-        stage("Checkout-git"){
+        stage("Git Pull"){
             steps{
                 git branch: 'dev2',  
                 url: 'https://github.com/gbelot2003/appbackend.git'
@@ -21,7 +21,7 @@ pipeline{
             steps{
                 script {
                     if(fileExists('./src/.env')){
-                        echo 'El archivo Existe'    
+                         echo "========Procesos activos, el archivo Existe========"
                     }else{
                         sh "cp ./src/.env.example ./src/.env"
                         sh "docker-compose run --rm artisan key:generate"
