@@ -3,13 +3,13 @@ pipeline{
     stages{
         stage("Checkout-git"){
             steps{
+                sh "sudo chown -R jenkins:jenkins ./src/mysql"
                 git branch: 'dev2',  
                 url: 'https://github.com/gbelot2003/appbackend.git'
             }
         }
         stage("Creando entorno Docker"){
             steps{
-                sh "sudo chown -R jenkins ./src/mysql"
                 sh "docker-compose up -d"
             }
         }
