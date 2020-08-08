@@ -19,7 +19,7 @@ pipeline{
         }
         stage("Copiando .env y Corriendo migraciones"){
             steps{
-                if(fileExists('./src/.env')){
+                @if(fileExists('./src/.env')){
                     echo 'El archivo Existe'    
                 }else{
                     sh "cp ./src/.env.example ./src/.env"
