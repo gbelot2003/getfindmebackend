@@ -1,2 +1,5 @@
 .DS_Store
 .idea
+mysql/*
+!mysql/.gitkeep
+./src/node_modules/*
