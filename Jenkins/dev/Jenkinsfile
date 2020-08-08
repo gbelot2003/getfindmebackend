@@ -7,6 +7,12 @@ pipeline{
                 url: 'https://github.com/gbelot2003/appbackend.git'
             }
         }
+        stage('Asegurando docker config'){
+            steps{
+                sh "rm docker-compose.yml"
+                sh "cp ./docker/dev/docker-compose.yml ./docker-compose.yml"
+            }
+        }
         stage("Creando entorno Docker"){
             steps{
                 sh "docker-compose up -d"
