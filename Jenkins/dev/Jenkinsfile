@@ -1,5 +1,5 @@
 pipeline{
-     agent {label '35.222.132.71'}
+    agent {label '35.222.132.71'}
     stages{
         stage("Asegurar permisos de folder mysql"){
             steps{
@@ -38,7 +38,7 @@ pipeline{
             steps{
                 script {
                     if(fileExists('./src/.env')){
-                         echo "========Procesos activos, el archivo Existe========"
+                        echo "========Procesos activos, el archivo Existe========"
                     }else{
                         sh "cp ./src/.env.example ./src/.env"
                         sh "docker-compose run --rm artisan key:generate"
