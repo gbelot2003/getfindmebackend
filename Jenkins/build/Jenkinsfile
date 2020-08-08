@@ -1,15 +1,6 @@
 pipeline{
      agent any
     stages{
-        stage("Asegurar permisos de folder mysql"){
-            steps{
-                script{
-                    if(fileExists('./mysql/.gitkeep')){
-                        sh "sudo visudo chown -R jenkins:jenkins ./mysql" 
-                    }
-                }
-            }
-        }
         stage("Checkout-git"){
             steps{
                 git branch: 'dev2',  
