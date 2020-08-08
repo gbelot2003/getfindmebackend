@@ -9,6 +9,7 @@ pipeline{
         }
         stage("Creando entorno Docker"){
             steps{
+                sh "sudo chown -R jenkins ./src/mysql"
                 sh "docker-compose up -d"
             }
         }
