@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent 35.222.132.71
     stages{
         stage("Checkout-git"){
             steps{
