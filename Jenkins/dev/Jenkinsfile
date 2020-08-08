@@ -1,6 +1,17 @@
 pipeline{
      agent {label '35.222.132.71'}
     stages{
+        stage("Asegurar permisos de folder mysql"){
+            steps{
+                script{
+                    if(fileExists('./src/.env')){
+                        sh "sudo chown -R jenkins ./mysql" 
+                    }
+                }
+            }
+        }
+    }
+    stages{
         stage("Git Pull"){
             steps{
                 git branch: 'dev2',  

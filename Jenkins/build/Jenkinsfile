@@ -1,9 +1,17 @@
 pipeline{
      agent any
     stages{
+        stage("Asegurar permisos de folder mysql"){
+            steps{
+                script{
+                    if(fileExists('./src/.env')){
+                        sh "sudo chown -R jenkins ./mysql" 
+                    }
+                }
+            }
+        }
         stage("Checkout-git"){
             steps{
-                sh "sudo chown -R jenkins:jenkins ./src/mysql"
                 git branch: 'dev2',  
                 url: 'https://github.com/gbelot2003/appbackend.git'
             }
