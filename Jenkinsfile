@@ -37,9 +37,6 @@ pipeline{
         stage("Cerrando Entorno Docker"){
             steps{
                 sh "docker-compose down"
-                withCredentials([sshUserPrivateKey(credentialsId: '<credential-id>', keyFileVariable: 'SSH_KEY')]) {
-                    sh("git push origin <local-branch>:<remote-branch>")
-                }
             }
         }
     }
