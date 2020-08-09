@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard  titlulo-->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -33,11 +33,15 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>{{ __('Users and Security') }}</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                @if(Request::is('users') || Request::is('permissions'))
+                    <!-- {{ $usuarios = 'tr' }} -->
+                @endif
+
+                <div id="collapseTwo" class="collapse {{ isset($usuarios) ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">{{ __('User & Permissions') }}:</h6>
-                        <a class="collapse-item" href="/users">{{ __('Users List') }}</a>
-                        <a class="collapse-item" href="/permissions">{{ __('Roles List') }}</a>
+                        <a class="collapse-item {{ Request::is('users') ? 'active' : '' }}" href="/users">{{ __('Users List') }}</a>
+                        <a class="collapse-item {{ Request::is('roles') ? 'active' : '' }}" href="/roles">{{ __('Roles List') }}</a>
                     </div>
                 </div>
             </li>

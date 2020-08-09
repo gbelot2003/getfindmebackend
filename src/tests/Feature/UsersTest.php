@@ -25,6 +25,12 @@ class UsersTest extends TestCase
     }
 
 
+    // Nuevo registro de usuarios con numero telefonico
+
+    // Nuevo sistema de login con numero telefonoco
+
+
+
     /** @test */
     public function user_index_is_ok_and_display_a_list_of_users()
     {
