@@ -35,12 +35,17 @@ pipeline{
                         sh "docker-compose run --rm artisan passport:install"
                     }
                 }
-                sh "docker-compose run --rm artisan migrate --seed"
+                
             }
         }
         stage("Ejecutando Pruebas Unitarias"){
             steps{
                 sh "docker-compose run --rm artisan test"
+            }
+        }
+        stage("Migrando y Seeding Tablas"){
+            steps{
+                sh "docker-compose run --rm artisan migrate:refresh --seed"
             }
         }
     }
