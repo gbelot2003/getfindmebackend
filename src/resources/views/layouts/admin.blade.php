@@ -18,8 +18,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    @include('layouts.admin._nav')
+    <div id="app">
+        @include('layouts.admin._nav')
 
+    </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>

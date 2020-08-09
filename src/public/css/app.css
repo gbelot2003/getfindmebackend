@@ -16995,7 +16995,7 @@ body {
   height: 100vh;
   background: #020024;
   background: #020024;
-  ackground: #020024;
+  background: #020024;
   background: linear-gradient(90deg, #020024 83%, #2c00ff 100%);
 }
 
@@ -17029,6 +17029,12 @@ body {
 .search-button {
   background: #eee;
   color: #dc3545;
+  border-radius: 50%;
+}
+
+.search-button:hover {
+  background-color: #eee;
+  transition: all 0.4s;
 }
 
 .search-input {
@@ -17042,5 +17048,19 @@ body {
   background: transparent;
   box-shadow: none;
   border-bottom: 2px solid #dc3545;
+}
+
+.icon-partent {
+  position: relative;
+}
+
+.icon-bullet::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  height: 12;
+  width: 12px;
+  background-color: #f44366;
 }
 
