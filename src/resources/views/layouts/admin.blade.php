@@ -22,7 +22,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    @include('layouts.admin.heading', ['title' => 'Dashboard'])
+                    @include('layouts.admin.heading', ['title'])
 
                     @yield('content')
 
