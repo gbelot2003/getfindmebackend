@@ -31,21 +31,20 @@ pipeline{
                     }else{
                         sh "cp ./src/.env.example ./src/.env"
                         sh "docker-compose run --rm artisan key:generate"
-                        sh "docker-compose run --rm artisan migrate --seed"
-                        sh "docker-compose run --rm artisan passport:install"
                     }
                 }
                 
             }
         }
-        stage("Ejecutando Pruebas Unitarias"){
-            steps{
-                sh "docker-compose run --rm artisan test"
-            }
-        }
         stage("Migrando y Seeding Tablas"){
             steps{
                 sh "docker-compose run --rm artisan migrate:refresh --seed"
+                sh "docker-compose run --rm artisan passport:install"
+            }
+        }
+        stage("Ejecutando Pruebas Unitarias"){
+            steps{
+                sh "docker-compose run --rm artisan test"
             }
         }
     }
