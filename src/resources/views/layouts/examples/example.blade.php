@@ -39,7 +39,38 @@
                     <!-- Page Heading -->
                     @include('layouts.admin.heading', ['title' => 'Titulo'])
 
-                    @yield('content')
+                    <!-- Earnings (Monthly) Card Example -->
+                    @include('layouts.examples.earnings')
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        @include('layouts.examples.chars')
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            @include('layouts.examples.project-card')
+
+                            <!-- Color System -->
+                            @include('layouts.examples.colors')
+
+                        </div>
+
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            @include('layouts.examples.ilustrations')
+
+                            <!-- Approach -->
+                            @include('layouts.examples.approach')
+
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -47,7 +78,7 @@
             </div>
             <!-- End of Main Content -->
 
-            {{-- @include('layouts.admin.footer') --}}
+            @include('layouts.admin.footer')
 
         </div>
         <!-- End of Content Wrapper -->
