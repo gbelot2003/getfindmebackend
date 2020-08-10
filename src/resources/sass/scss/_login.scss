@@ -14,7 +14,13 @@
 }
 
 .bg-password-image {
-  background: url('https://source.unsplash.com/oWTW-jNGl9I/600x800');
+  background: url('https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80');
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-verify-image-2 {
+  background: url('https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80');
   background-position: center;
   background-size: cover;
 }
