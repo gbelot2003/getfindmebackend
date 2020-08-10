@@ -19,7 +19,8 @@
         "laravolt/avatar": "^3.2",
         "orangehill/iseed": "^2.6",
         "propaganistas/laravel-phone": "^4.2",
-        "spatie/laravel-permission": "^3.13"
+        "spatie/laravel-permission": "^3.13",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
