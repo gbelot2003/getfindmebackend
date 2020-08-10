@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "orangehill/iseed": "^2.6",
+        "propaganistas/laravel-phone": "^4.2",
         "spatie/laravel-permission": "^3.13"
     },
     "require-dev": {
