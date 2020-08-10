@@ -29,7 +29,22 @@ class UsersTest extends TestCase
 
     // Nuevo sistema de login con numero telefonoco
 
+    /** @test */
+    public function a_user_is_created_with_phonefield_included()
+    {
+        $user = [
+            'name' => 'User Name',
+            'email' => 'user@emai.com',
+            'password' => 'NoTienePassword01',
+            'password_confirmation' => 'NoTienePassword01',
+            'phonefield' => '(504) 480-4255',
+        ];
 
+        $response = $this->post('/register', $user)
+            ->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('users', ['email' => 'user@emai.com']);
+    }
 
     /** @test */
     public function user_index_is_ok_and_display_a_list_of_users()
