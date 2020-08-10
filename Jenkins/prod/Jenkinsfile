@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Git Pull"){
             steps{
-                git branch: 'dev2',  
+                git branch: 'master',  
                 url: 'https://github.com/gbelot2003/appbackend.git'
             }
         }

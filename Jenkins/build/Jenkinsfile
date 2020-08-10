@@ -9,7 +9,7 @@ pipeline{
         }
         stage("Creando entorno Docker"){
             steps{
-                sh "docker-compose up -d"
+                sh "docker-compose up -d --build"
             }
         }
         stage("Instalando Paquetes Compose"){
@@ -21,6 +21,7 @@ pipeline{
             steps{
                 sh "cp ./src/.env.example ./src/.env"
                 sh "docker-compose run --rm artisan key:generate"
+                sh "docker-compose run --rm artisan config:cache"
             }
         }
         stage("Ejecutando Pruebas Unitarias"){

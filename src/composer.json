@@ -16,7 +16,9 @@
         "laravel/passport": "^9.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "laravolt/avatar": "^3.2",
         "orangehill/iseed": "^2.6",
+        "propaganistas/laravel-phone": "^4.2",
         "spatie/laravel-permission": "^3.13"
     },
     "require-dev": {
