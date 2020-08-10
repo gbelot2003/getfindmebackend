@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" name="phonefield" class="form-control form-control-user"
-                                           id="phonefield" placeholder="{{ __('Phone') }}">
+                                           id="phonefield" placeholder="{{ __('Phone Number') }}">
                                     @error('phonefield')
                                     <div class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
