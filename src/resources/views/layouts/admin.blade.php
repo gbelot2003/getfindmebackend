@@ -48,7 +48,7 @@
     <!-- Logout Modal-->
     @include('layouts.admin.logout')
     <!-- Bootstrap core JavaScript-->
-    <script src="js/app.js"></script>
+    <script src="/js/app.js"></script>
 
 
 </body>
