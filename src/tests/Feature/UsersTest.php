@@ -44,6 +44,8 @@ class UsersTest extends TestCase
             ->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('users', ['email' => 'user@emai.com']);
+
+
     }
 
     /** @test */
