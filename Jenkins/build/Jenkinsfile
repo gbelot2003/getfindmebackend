@@ -21,6 +21,7 @@ pipeline{
             steps{
                 sh "cp ./src/.env.example ./src/.env"
                 sh "docker-compose run --rm artisan key:generate"
+                sh "docker-compose run --rm artisan config:cache"
             }
         }
         stage("Ejecutando Pruebas Unitarias"){

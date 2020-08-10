@@ -21,6 +21,7 @@ pipeline{
         stage("Instalando Paquetes Compose"){
             steps{
                 sh "docker-compose run --rm composer install"
+                sh "docker-compose run --rm artisan config:cache"
             }
         }
         stage("Copiando .env y Corriendo migraciones"){
