@@ -1,13 +1,11 @@
-FROM php:7.2-fpm
+FROM php:7.4-fpm-alpine
 
 WORKDIR /var/www/html
 
-RUN docker-php-ext-install pdo pdo_mysql
-
-RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libmagickwand-dev \
-    && rm -rf /var/lib/apt/lists/* \
+RUN set -ex \
+    && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS imagemagick-dev libtool \
+    && export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
     && pecl install imagick-3.4.3 \
-    && docker-php-ext-enable imagick
+    && docker-php-ext-enable imagick \
+    && apk add --no-cache --virtual .imagick-runtime-deps imagemagick \
+    && apk del .phpize-deps

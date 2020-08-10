@@ -32,7 +32,10 @@ class UsersTest extends TestCase
     /** @test */
     public function a_user_is_created_with_phonefield_included()
     {
+        $this->withoutExceptionHandling();
+
         $user = [
+            '_token' => csrf_token(),
             'name' => 'User Name',
             'email' => 'user@emai.com',
             'password' => 'NoTienePassword01',
@@ -44,8 +47,6 @@ class UsersTest extends TestCase
             ->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('users', ['email' => 'user@emai.com']);
-
-
     }
 
     /** @test */
