@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use OwenIt\Auditing\Models\Audit;
 
 class UserEventSuscriber
@@ -14,25 +12,28 @@ class UserEventSuscriber
      */
     public function handleUserLogin($event) {
         $data = [
-            'auditable_id' => auth()->user()->id,
-            'auditable_type' => "Logged In",
+            'user_type'  => 'App/User',
+            'user_id'    => auth()->user()->id,
             'event'      => "Logged In",
+            'auditable'  => 'App\User',
+            'old_values' => auth()->user()->id,
+            'new_values' => auth()->user()->id,
             'url'        => request()->fullUrl(),
             'ip_address' => request()->getClientIp(),
             'user_agent' => request()->userAgent(),
+            'tags'       => '',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'user_id'    => auth()->user()->id,
         ];
 
         //create audit trail data
-        $details = Audit::create($data);
+        Audit::create($data);
     }
 
     /**
      * Handle user logout events.
      */
-    public function handleUserLogout($event) {
+    public function handleUserLogout() {
 
         $data = [
             'auditable_id' => auth()->user()->id,
@@ -47,7 +48,7 @@ class UserEventSuscriber
         ];
 
         //create audit trail data
-        $details = Audit::create($data);
+        Audit::create($data);
 
     }
 
@@ -59,12 +60,12 @@ class UserEventSuscriber
     public function subscribe($events)
     {
         $events->listen(
-            'Illuminate\Auth\Events\Login',
+            'App\Events\UserAuthEvent',
             'App\Listeners\UserEventSubscriber@handleUserLogin'
         );
 
         $events->listen(
-            'Illuminate\Auth\Events\Logout',
+            'App\Events\UserLogOuEvent',
             'App\Listeners\UserEventSubscriber@handleUserLogout'
         );
     }

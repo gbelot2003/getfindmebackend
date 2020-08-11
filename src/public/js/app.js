@@ -68901,6 +68901,69 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/js/Audits/AuditDt.js":
+/*!*******************************************!*\
+  !*** ./resources/js/js/Audits/AuditDt.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('#dataTable').DataTable({
+    processing: true,
+    serverSide: false,
+    ajax: "/audits",
+    "order": [[0, "desc"]],
+    columns: [{
+      data: 'id',
+      name: 'id'
+    }, {
+      data: 'updated_at',
+      name: 'updated_at'
+    }, {
+      data: 'user_type',
+      name: 'user_type'
+    }, {
+      data: 'event',
+      name: 'event'
+    }, {
+      data: 'auditable_type',
+      name: 'auditable_type'
+    }, {
+      data: 'old_values',
+      name: 'old_values'
+    }, {
+      data: 'new_values',
+      name: 'new_values'
+    }, {
+      data: 'url',
+      name: 'url'
+    }, {
+      data: 'ip_address',
+      name: 'ip_address'
+    }, {
+      data: 'user_agent',
+      name: 'user_agent'
+    }, {
+      data: 'tags',
+      name: 'tags'
+    }]
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/js/Audits/index.js":
+/*!*****************************************!*\
+  !*** ./resources/js/js/Audits/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./AuditDt */ "./resources/js/js/Audits/AuditDt.js");
+
+/***/ }),
+
 /***/ "./resources/js/js/Users/UserDT.js":
 /*!*****************************************!*\
   !*** ./resources/js/js/Users/UserDT.js ***!
@@ -68976,6 +69039,8 @@ __webpack_require__(/*! ./UserDT */ "./resources/js/js/Users/UserDT.js");
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./Users/index */ "./resources/js/js/Users/index.js");
+
+__webpack_require__(/*! ./Audits/index */ "./resources/js/js/Audits/index.js");
 
 /***/ }),
 
