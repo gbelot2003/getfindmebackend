@@ -9,12 +9,14 @@ class AuditController extends Controller
 {
     function __construct()
     {
-        //TODO: Gestionar permisos
+        $this->middleware('auth');
+        $this->middleware(['role:Administrator|Supervisor']);
     }
 
     public function index()
     {
-
+        $title = 'Audit Logs';
+        return View('audits.index', compact('title'));
     }
 
 
