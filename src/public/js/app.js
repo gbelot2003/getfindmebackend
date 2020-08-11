@@ -68913,7 +68913,12 @@ $(document).ready(function () {
     processing: true,
     serverSide: true,
     ajax: "/users",
-    "order": [[4, "desc"], [0, "desc"]],
+    "order": [[0, "desc"]],
+    "createdRow": function createdRow(row, data, dataIndex) {
+      if (data['user_status'] == 2) {
+        $(row).addClass('alert-info');
+      }
+    },
     columns: [{
       data: 'id',
       name: 'id'
@@ -68931,7 +68936,14 @@ $(document).ready(function () {
       name: 'rname'
     }, {
       data: 'user_status',
-      name: 'user_status'
+      name: 'user_status',
+      "render": function render(data, type, row) {
+        if (data === 1) {
+          return 'Active';
+        }
+
+        return 'Inactive';
+      }
     }, {
       data: 'updated_at',
       name: 'updated_at'
