@@ -16,7 +16,7 @@
                             <th>{{ __('Name')  }}</th>
                             <th>{{ __('E-mail') }}</th>
                             <th>{{ __('Telephone') }}</th>
-                            <th>{{ __('Data') }}</th>
+                            <th>{{ __('Date of Submission') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>

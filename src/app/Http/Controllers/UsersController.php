@@ -33,13 +33,14 @@ class UsersController extends Controller
      */
     private function UsersDataTable()
     {
-        $build = DB::table('users')->select('id', 'name', 'email', 'phonefield', 'updated_at');
+        $build = DB::table('users')
+            ->select('id', 'name', 'email', 'phonefield', 'updated_at');
 
         return dataTables::of($build)
             ->addColumn('actions', function ($name) {
                 return '
-            <a class="" href="users/' . $name->id . '"><i class="fas fa-eye"></i> Ver</a> | 
-            <a class="" href="users/' . $name->id . '/edit"><i class="fas fa-edit"></i> Editar</a>';
+            <a class="" href="users/' . $name->id . '"><i class="fas fa-eye"></i> Watch</a> | 
+            <a class="" href="users/' . $name->id . '/edit"><i class="fas fa-edit"></i> Edit</a>';
             })
             ->rawColumns(['actions'])
             ->make(true);
