@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -51,7 +52,7 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => '2020-08-10 01:28:25',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
                 'phonefield' => '286.722.6547 x19675',
-                'user_status' => 1,
+                'user_status' => 2,
                 'remember_token' => 'Xjo2joBh41',
                 'created_at' => '2020-08-10 01:28:25',
                 'updated_at' => '2020-08-10 01:28:25',
@@ -271,14 +272,72 @@ class UsersTableSeeder extends Seeder
                 'email' => 'eugene.swaniawski@example.net',
                 'email_verified_at' => '2020-08-10 01:28:25',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'phonefield' => '(774) 855-4928 x6919',
-                'user_status' => 1,
+                'phonefield' => '(774) 855-4928 x6919',
+                'user_status' => 2,
                 'remember_token' => '7rbNQJYuT1',
                 'created_at' => '2020-08-10 01:28:26',
                 'updated_at' => '2020-08-10 01:28:26',
             ),
         ));
-        
-        
+
+        $user = User::find(1);
+        $user->assignRole('Administrator');
+
+        $user = User::find(2);
+        $user->assignRole('Supervisor');
+
+        $user = User::find(3);
+        $user->assignRole('Administrator');
+
+        $user = User::find(4);
+        $user->assignRole('Supervisor');
+
+        $user = User::find(5);
+        $user->assignRole('Sponsor');
+
+        $user = User::find(6);
+        $user->assignRole('Sponsor');
+
+        $user = User::find(7);
+        $user->assignRole('Sponsor');
+
+        $user = User::find(8);
+        $user->assignRole('Sponsor');
+
+        $user = User::find(9);
+        $user->assignRole('Sponsor');
+
+        $user = User::find(10);
+        $user->assignRole('Sponsor');
+
+        $user = User::find(11);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(12);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(13);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(14);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(15);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(16);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(17);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(18);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(19);
+        $user->assignRole('Subscriber');
+
+        $user = User::find(20);
+        $user->assignRole('Subscriber');
     }
 }

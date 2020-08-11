@@ -21,7 +21,7 @@ class UsersTest extends TestCase
         \Artisan::call('migrate', ['-vvv' => true]);
 
         // Creamos una lista de usuarios
-        $users = factory(User::class, 20)->create();
+        $this->users = factory(User::class, 20)->create();
     }
 
 
@@ -55,15 +55,17 @@ class UsersTest extends TestCase
         // Creamos un usuario para login
         $user = factory(User::class)->create();
 
-        // Recogemos un usario de la lista para visualizar
-        $firstUser = User::find(1);
-
         // hacemos request a la pagina users
         $response = $this->actingAs($user)->get('/users');
 
         // La pagina esta en 200 y titulo es visible
         $response->assertStatus(200)->assertSeeText('Users');
 
-        //$response->assertSee($firstUser->name);
+        // Ingresamos a /users y el datatable muestra la informacion que buscamos
+        $this->actingAs($user)
+            ->getJson(route('users.index'), ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
+            // See the users' results as expected
+            ->assertSeeText(htmlspecialchars($user->name, ENT_QUOTES))
+            ->assertSeeText($user->phonefield);
     }
 }
