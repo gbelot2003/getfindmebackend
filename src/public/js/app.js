@@ -68746,11 +68746,10 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Codigo Js
 
-__webpack_require__(/*! ./sb-admin-2 */ "./resources/js/sb-admin-2.js");
 
-__webpack_require__(/*! ./js/UserDT */ "./resources/js/js/UserDT.js");
+__webpack_require__(/*! ./js */ "./resources/js/js/index.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -68805,6 +68804,8 @@ try {
   __webpack_require__(/*! datatables.net-buttons-bs4 */ "./node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4.js")();
 
   __webpack_require__(/*! datatables.net-responsive-bs4 */ "./node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.js")();
+
+  __webpack_require__(/*! ./sb-admin-2 */ "./resources/js/sb-admin-2.js");
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -68900,10 +68901,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/js/UserDT.js":
-/*!***********************************!*\
-  !*** ./resources/js/js/UserDT.js ***!
-  \***********************************/
+/***/ "./resources/js/js/Users/UserDT.js":
+/*!*****************************************!*\
+  !*** ./resources/js/js/Users/UserDT.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -68941,6 +68942,28 @@ $(document).ready(function () {
     }]
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/js/Users/index.js":
+/*!****************************************!*\
+  !*** ./resources/js/js/Users/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./UserDT */ "./resources/js/js/Users/UserDT.js");
+
+/***/ }),
+
+/***/ "./resources/js/js/index.js":
+/*!**********************************!*\
+  !*** ./resources/js/js/index.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./Users/index */ "./resources/js/js/Users/index.js");
 
 /***/ }),
 

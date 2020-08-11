@@ -6,11 +6,8 @@
 
 require('./bootstrap');
 
-
-require('./sb-admin-2');
-
-
-require('./js/UserDT');
+// Codigo Js
+require('./js');
 
 
 window.Vue = require('vue');

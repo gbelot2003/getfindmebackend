@@ -18,6 +18,11 @@ try {
     require('datatables.net-bs4')();
     require('datatables.net-buttons-bs4')();
     require('datatables.net-responsive-bs4')();
+
+    require('./sb-admin-2');
+
+
+
 } catch (e) {}
 
 /**
