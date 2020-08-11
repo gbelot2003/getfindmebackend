@@ -14,7 +14,7 @@ $(document).ready( function () {
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
             { data: 'phonefield', name: 'phonefield' },
-            { data: 'rname', name: 'rname' },
+            { data: 'rname', name: 'roles.name' },
             { data: 'user_status', name: 'user_status',
                 "render": function(data, type, row){
                     if (data === 1){

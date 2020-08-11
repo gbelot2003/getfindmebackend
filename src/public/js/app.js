@@ -68933,7 +68933,7 @@ $(document).ready(function () {
       name: 'phonefield'
     }, {
       data: 'rname',
-      name: 'rname'
+      name: 'roles.name'
     }, {
       data: 'user_status',
       name: 'user_status',

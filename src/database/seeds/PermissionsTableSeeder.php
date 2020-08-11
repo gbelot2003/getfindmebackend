@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-//TODO: Cambiar los modelos para agregar logs
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use App\Permissions as Permission;
+use App\Roles as Role;
 
 class PermissionsTableSeeder extends Seeder
 {
