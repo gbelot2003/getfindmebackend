@@ -10,7 +10,12 @@ require('./bootstrap');
 require('./sb-admin-2');
 
 
+require('./js/UserDT');
+
+
 window.Vue = require('vue');
+
+
 
 /**
  * The following block of code may be used to automatically register your

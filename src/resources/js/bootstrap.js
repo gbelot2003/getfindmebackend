@@ -11,6 +11,13 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
+    /**
+     * Instalacion de DataTable
+     */
+    require('datatables.net-bs4')();
+    require('datatables.net-buttons-bs4')();
+    require('datatables.net-responsive-bs4')();
 } catch (e) {}
 
 /**
