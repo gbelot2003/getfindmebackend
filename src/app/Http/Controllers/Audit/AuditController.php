@@ -20,17 +20,16 @@ class AuditController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()) {
-            $audit =  DB::table('audits')->select('id', 'updated_at', 'user_type',
-                'user_type', 'event', 'auditable_type', 'old_values', 'new_values', 'url',
-                'ip_address', 'user_agent', 'tags');
+            $audit =  DB::table('audits')->select('audits.id', 'audits.updated_at',
+                 'audits.event', 'audits.auditable_type', 'audits.old_values', 'audits.new_values', 'audits.url',
+                'audits.ip_address', 'audits.user_agent', 'audits.tags', 'users.name as name')
+            ->leftJoin('users', 'audits.user_id', '=', 'users.id');
 
             return dataTables::of($audit)->make(true);
         }
 
         $title = 'Audit Logs';
-        $rows = Audit::OrderBy('id', 'DESC')->paginate(20);
-        //dd($rows);
-        return View('audits.index', compact('title', 'rows'));
+        return View('audits.index', compact('title'));
     }
 
 
