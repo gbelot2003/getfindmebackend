@@ -33,8 +33,7 @@ class UsersController extends Controller
      */
     private function UsersDataTable()
     {
-        $build = DB::table('users')->select('id', 'name', 'email', 'phonefield', 'updated_at')
-            ->orderBy('id', 'DESC');
+        $build = DB::table('users')->select('id', 'name', 'email', 'phonefield', 'updated_at');
 
         return dataTables::of($build)
             ->addColumn('actions', function ($name) {
@@ -43,6 +42,6 @@ class UsersController extends Controller
             <a class="" href="users/' . $name->id . '/edit"><i class="fas fa-edit"></i> Editar</a>';
             })
             ->rawColumns(['actions'])
-            ->make();
+            ->make(true);
     }
 }

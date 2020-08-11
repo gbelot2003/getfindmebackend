@@ -3,13 +3,13 @@ $(document).ready( function () {
         processing: true,
         serverSide: true,
         ajax: "/users",
-        "order": [[0, "desc"]],
+        "order": [[4, "desc"], [0, "desc"]],
         columns: [
-            { data: 'id', name: 'users.id' },
-            { data: 'name', name: 'users.name' },
-            { data: 'email', name: 'users.email' },
-            { data: 'phonefield', name: 'users.phonefield' },
-            { data: 'updated_at', name: 'users.updated_at' },
+            { data: 'id', name: 'id' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'phonefield', name: 'phonefield' },
+            { data: 'updated_at', name: 'updated_at' },
             { data: 'actions', name: 'action', "searchable": false }
         ]
     });

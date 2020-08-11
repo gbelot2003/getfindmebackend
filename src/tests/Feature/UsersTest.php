@@ -61,6 +61,7 @@ class UsersTest extends TestCase
         // La pagina esta en 200 y titulo es visible
         $response->assertStatus(200)->assertSeeText('Users');
 
+        // Ingresamos a /users y el datatable muestra la informacion que buscamos
         $this->actingAs($user)
             ->getJson(route('users.index'), ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
             // See the users' results as expected

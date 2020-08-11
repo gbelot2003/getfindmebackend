@@ -68912,22 +68912,22 @@ $(document).ready(function () {
     processing: true,
     serverSide: true,
     ajax: "/users",
-    "order": [[0, "desc"]],
+    "order": [[4, "desc"], [0, "desc"]],
     columns: [{
       data: 'id',
-      name: 'users.id'
+      name: 'id'
     }, {
       data: 'name',
-      name: 'users.name'
+      name: 'name'
     }, {
       data: 'email',
-      name: 'users.email'
+      name: 'email'
     }, {
       data: 'phonefield',
-      name: 'users.phonefield'
+      name: 'phonefield'
     }, {
       data: 'updated_at',
-      name: 'users.updated_at'
+      name: 'updated_at'
     }, {
       data: 'actions',
       name: 'action',

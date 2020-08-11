@@ -22,7 +22,7 @@
                                     <input type="email" name="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" class="for form-control-user" id="password" placeholder="Password">
+                                    <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
