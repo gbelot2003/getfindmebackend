@@ -64,6 +64,7 @@ class UsersTest extends TestCase
         $this->actingAs($user)
             ->getJson(route('users.index'), ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
             // See the users' results as expected
-            ->assertSeeText($user->name);
+            ->assertSeeText(htmlspecialchars($user->name, ENT_QUOTES))
+            ->assertSeeText($user->phonefield);
     }
 }

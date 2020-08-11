@@ -18,15 +18,22 @@ class UsersController extends Controller
 
     public function index(Request $request)
     {
+
+        if($request->ajax()){
+            return $this->UsersDataTable();
+        }
         //Definimos titulo de la sección;
         $title = 'Usuarios';
 
         return View('users.index', compact('title'));
     }
 
-    public function tables()
+    /**
+     * @return mixed
+     */
+    private function UsersDataTable()
     {
-        $build = DB::table('users')->select('id', 'name', 'email', 'updated_at')
+        $build = DB::table('users')->select('id', 'name', 'email', 'phonefield', 'updated_at')
             ->orderBy('id', 'DESC');
 
         return dataTables::of($build)

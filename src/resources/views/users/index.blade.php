@@ -15,6 +15,7 @@
                             <th>{{ __('id') }}</th>
                             <th>{{ __('Name')  }}</th>
                             <th>{{ __('E-mail') }}</th>
+                            <th>{{ __('Telephone') }}</th>
                             <th>{{ __('Data') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>

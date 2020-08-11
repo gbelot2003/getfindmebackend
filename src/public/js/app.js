@@ -68911,7 +68911,7 @@ $(document).ready(function () {
   $('#laravel_datatable').DataTable({
     processing: true,
     serverSide: true,
-    ajax: "/users-table",
+    ajax: "/users",
     "order": [[0, "desc"]],
     columns: [{
       data: 'id',
@@ -68923,11 +68923,15 @@ $(document).ready(function () {
       data: 'email',
       name: 'users.email'
     }, {
+      data: 'phonefield',
+      name: 'users.phonefield'
+    }, {
       data: 'updated_at',
       name: 'users.updated_at'
     }, {
       data: 'actions',
-      name: 'action'
+      name: 'action',
+      "searchable": false
     }]
   });
 });
