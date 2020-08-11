@@ -287,10 +287,10 @@ class UsersTableSeeder extends Seeder
         $user->assignRole('Supervisor');
 
         $user = User::find(3);
-        $user->assignRole('Editor');
+        $user->assignRole('Administrator');
 
         $user = User::find(4);
-        $user->assignRole('Sponsor');
+        $user->assignRole('Supervisor');
 
         $user = User::find(5);
         $user->assignRole('Sponsor');

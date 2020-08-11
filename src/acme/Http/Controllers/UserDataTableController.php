@@ -14,7 +14,10 @@ class UserDataTableController {
     public function UsersDataTable()
     {
         $build = DB::table('users')
-            ->select('id', 'name', 'email', 'phonefield', 'updated_at');
+            ->select('users.id', 'users.name', 'users.email', 'users.phonefield',
+                'users.updated_at', 'users.user_status', 'roles.name as rname')
+            ->leftJoin('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
+            ->leftJoin('roles', 'model_has_roles.role_id', 'roles.id');
 
         return dataTables::of($build)
             ->addColumn('actions', function ($name) {

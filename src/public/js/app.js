@@ -68926,6 +68926,12 @@ $(document).ready(function () {
       data: 'phonefield',
       name: 'phonefield'
     }, {
+      data: 'rname',
+      name: 'rname'
+    }, {
+      data: 'user_status',
+      name: 'user_status'
+    }, {
       data: 'updated_at',
       name: 'updated_at'
     }, {
