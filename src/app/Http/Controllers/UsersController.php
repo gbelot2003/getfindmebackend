@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Roles;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,8 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         $title = $user->name;
-        return view('users.edit', compact('user', 'title'));
+        $roles = Roles::all();
+        return view('users.edit', compact('user', 'title', 'roles'));
     }
 
 }

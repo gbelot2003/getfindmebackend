@@ -40,7 +40,13 @@
                             <input type="email" class="form-control" name="email" placeholder="E-Mail" value="{{ $user->email }}">
                         </div>
                     </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="mb-4 py-3 pl-2 bg-gray-100 border-left-primary">Esta sección es para cambiar manualmente el Password del
+                        ususario, manejese con cuidado!!</p>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group mb-4">
                             <label class="form-label">{{ __('Password') }}</label>
@@ -54,15 +60,46 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <select class="form-control" name="product_id">
+
+
+
+                            <option>Select Product</option>
+
+
+
+                            @foreach ($products as $key => $value)
+
+                                <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>
+
+                                    {{ $value }}
+
+                                </option>
+
+                            @endforeach
+
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12 mb-4">
-                        <label for="chkToggle2"></label>
-                        <input id="chkToggle2" type="checkbox" name="user_status" {{ $user->user_status === 1 ? 'checked' : '' }} data-toggle="toggle" data-width="100">
+                        <label for="chkToggle2">{{ __('Status') }}</label>
+                        <input id="chkToggle2" type="checkbox" data-on="Active" data-off="Inactive"
+                               name="user_status" {{ $user->user_status === 1 ? 'checked' : '' }}
+                               data-toggle="toggle" data-width="100">
                     </div>
                 </div>
                 <div class="card-footer bg-transparent border-success">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    <a class="btn btn-warning" href="/users">Cancel</a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary mr-3">Update</button>
+                            <a class="btn btn-warning" href="/users">Cancel</a>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>
