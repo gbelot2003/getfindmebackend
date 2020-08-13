@@ -36,7 +36,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: ./php/dockerfile
+      dockerfile: ./php/php.dockerfile
     volumes:
       - ./src:/var/www/html
     ports:
@@ -64,7 +64,7 @@ services:
   artisan:
     build:
       context: .
-      dockerfile: ./php/dockerfile
+      dockerfile: ./php/php.dockerfile
     volumes:
       - ./src:/var/www/html
     depends_on:

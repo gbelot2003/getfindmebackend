@@ -26,7 +26,7 @@
                             <th>{{ __('E-mail') }}</th>
                             <th>{{ __('Telephone') }}</th>
                             <th>{{ __('Rol') }}</th>
-                            <th>{{ __('Estado') }}</th>
+                            <th>{{ __('State') }}</th>
                             <th>{{ __('Date of Submission') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>

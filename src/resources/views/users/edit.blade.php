@@ -63,22 +63,11 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <select class="form-control" name="product_id">
-
-
-
-                            <option>Select Product</option>
-
-
-
-                            @foreach ($products as $key => $value)
-
-                                <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>
-
-                                    {{ $value }}
-
+                        <select class="form-control mb-4" name="product_id">
+                            @foreach ($roles as $key => $rol)
+                                <option value="{{ $rol->id }}"  {{ ( $rol->id === $user->roles[0]->id ) ? 'selected' : '' }}>
+                                    {{ $rol->name }}
                                 </option>
-
                             @endforeach
 
                         </select>
