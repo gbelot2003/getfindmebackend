@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 
+@section('labels')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="/users">{{ __('Audit Logs') }}</a></li>
+        </ol>
+    </nav>
+@stop
+
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">

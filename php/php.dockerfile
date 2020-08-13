@@ -1,5 +1,7 @@
 FROM php:7.3-fpm-alpine
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 WORKDIR /var/www/html
 
 #Install imagemagick:
@@ -7,7 +9,8 @@ ENV MAGICK_HOME=/usr
 
 RUN apk --no-cache update \
     && apk --no-cache upgrade \
-    && apk add --update freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev autoconf g++ imagemagick-dev imagemagick libtool make \
+    && apk add --update freetype-dev libwebp-dev libpng libpng-dev zlib-dev libxpm-dev gd \
+    libjpeg-turbo-dev libxml2-dev autoconf g++ imagemagick-dev imagemagick libtool make \
     && docker-php-ext-configure gd \
         --with-gd \
         --with-freetype-dir=/usr/include/ \
@@ -21,4 +24,5 @@ RUN apk --no-cache update \
     && docker-php-ext-install pdo pdo_mysql \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
+    && docker-php-ext-enable gd \
     && apk del autoconf g++ libtool make

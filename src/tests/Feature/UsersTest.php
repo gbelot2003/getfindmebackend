@@ -57,6 +57,12 @@ class UsersTest extends TestCase
         // Creamos un usuario para login
         $user = factory(User::class)->create();
 
+        $response = $this->actingAs($user)->get('/users');
+        $response->assertStatus(403);
+
+        //Solo administradores pueden ver usuarios
+        $user->assignRole('Administrator');
+
         // hacemos request a la pagina users
         $response = $this->actingAs($user)->get('/users');
 
@@ -70,4 +76,49 @@ class UsersTest extends TestCase
             ->assertSeeText(htmlspecialchars($user->name, ENT_QUOTES))
             ->assertSeeText($user->phonefield);
     }
+
+   /** @test */
+    public function only_administrators_can_see_edit_users()
+    {
+        // Creamos al admin
+        $user = factory(User::class)->create();
+
+        // Creamos al usuaro a ver
+        $user2see = factory(User::class)->create();
+
+        // Tratamos de abrir sin permisos
+        $response = $this->actingAs($user)
+            ->get('/users/'. $user->id .'/edit')->assertStatus(403);
+
+        // Damos permisos al usuario
+        $user->assignRole('Administrator');
+
+        // Abrimos con permisos
+        $response = $this->actingAs($user)
+            ->get('/users/'. $user2see->id .'/edit')
+            ->assertStatus(200)
+            ->assertSee($user2see->name);
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

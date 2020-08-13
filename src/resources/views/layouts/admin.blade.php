@@ -24,6 +24,8 @@
                     <!-- Page Heading -->
                     @include('layouts.admin.heading', ['title'])
 
+                    @yield('labels')
+
                     @yield('content')
 
                 </div>

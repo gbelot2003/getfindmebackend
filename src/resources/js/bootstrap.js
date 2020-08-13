@@ -22,8 +22,11 @@ try {
     require('./sb-admin-2');
 
 
-
 } catch (e) {}
+
+// Se define fuera del try
+require('bootstrap4-toggle');
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

@@ -1,4 +1,7 @@
 $(document).ready( function () {
+
+    $('#chkToggle2').bootstrapToggle();
+
     $('#laravel_datatable').DataTable({
         processing: true,
         serverSide: true,
