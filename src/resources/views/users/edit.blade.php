@@ -16,7 +16,8 @@
             <h6 class="m-0 font-weight-bold text-primary">{{ __('Updating') }} {{ $user->name }} {{ __('info') }}</h6>
         </div>
         <div class="card-body">
-            <form action="/users" method="patch">
+            <form action="/users/{{ $user->id }}" method="patch">
+                @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group mb-4">

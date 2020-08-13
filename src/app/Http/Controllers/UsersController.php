@@ -43,4 +43,9 @@ class UsersController extends Controller
         return view('users.edit', compact('user', 'title', 'roles'));
     }
 
+    public function update(User $user, Request $request)
+    {
+
+    }
+
 }
