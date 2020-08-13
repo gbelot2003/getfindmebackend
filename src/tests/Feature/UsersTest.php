@@ -19,6 +19,7 @@ class UsersTest extends TestCase
 
         // Reseteamos base de datos
         \Artisan::call('migrate', ['-vvv' => true]);
+        \Artisan::call('db:seed', ['-vvv' => true]);
 
         // Creamos una lista de usuarios
         $this->users = factory(User::class, 20)->create();
@@ -41,6 +42,7 @@ class UsersTest extends TestCase
             'password' => 'NoTienePassword01',
             'password_confirmation' => 'NoTienePassword01',
             'phonefield' => '(504) 480-4255',
+            'role' => 'Subscriber'
         ];
 
         $response = $this->post('/register', $user)

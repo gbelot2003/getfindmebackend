@@ -4,6 +4,7 @@ WORKDIR /var/www/html
 
 #Install imagemagick:
 ENV MAGICK_HOME=/usr
+
 RUN apk --no-cache update \
     && apk --no-cache upgrade \
     && apk add --update freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev autoconf g++ imagemagick-dev imagemagick libtool make \
