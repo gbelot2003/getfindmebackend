@@ -59,6 +59,15 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <select class="form-control" id="select_role" name="role">
+                                    <option value="">{{ __('Please, Select the rol you need') }}</option>
+                                    <option value="Subscriber">Suscriptor</option>
+                                    <option value="Sponsor">Sponsor</option>
+                                </select>
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 {{ __('Register Account') }}
                             </button>

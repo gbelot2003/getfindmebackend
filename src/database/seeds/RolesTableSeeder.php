@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-//TODO: Cambiar el modelo
-use Spatie\Permission\Models\Role;
+use App\Roles as Role;
 
 class RolesTableSeeder extends Seeder
 {

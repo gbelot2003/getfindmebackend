@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 
 
+@section('labels')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="/users">{{ __('Users') }}</a></li>
+        </ol>
+    </nav>
+@stop
+
 @section('content')
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -17,7 +26,7 @@
                             <th>{{ __('E-mail') }}</th>
                             <th>{{ __('Telephone') }}</th>
                             <th>{{ __('Rol') }}</th>
-                            <th>{{ __('Estado') }}</th>
+                            <th>{{ __('State') }}</th>
                             <th>{{ __('Date of Submission') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>

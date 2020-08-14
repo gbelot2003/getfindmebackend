@@ -13,15 +13,41 @@ class UsersTest extends TestCase
 
     private $users;
 
+    private $admin;
+
+    private $user2edit;
+
     protected function setUp(): void
     {
         parent::setUp();
 
         // Reseteamos base de datos
         \Artisan::call('migrate', ['-vvv' => true]);
+        \Artisan::call('db:seed', ['-vvv' => true]);
 
         // Creamos una lista de usuarios
         $this->users = factory(User::class, 20)->create();
+
+        $this->admin = factory(User::class)->create();
+        $this->admin->assignRole('Administrator');
+
+        // creamos un usuario para editar
+        $this->user2edit = factory(User::class)->create();
+    }
+
+    /**
+     * Funcion de sobreescritura de valores para
+     * probar validaciones
+     * @return array
+     */
+    protected function validFields($override = [])
+    {
+        return array_merge([
+            'name'          => $this->user2edit->name,
+            'email'         => $this->user2edit->email,
+            'phonefield'    => $this->user2edit->phonefield,
+            'user_status'   => $this->user2edit->user_status
+        ], $override);
     }
 
 
@@ -41,6 +67,7 @@ class UsersTest extends TestCase
             'password' => 'NoTienePassword01',
             'password_confirmation' => 'NoTienePassword01',
             'phonefield' => '(504) 480-4255',
+            'role' => 'Subscriber'
         ];
 
         $response = $this->post('/register', $user)
@@ -55,6 +82,12 @@ class UsersTest extends TestCase
         // Creamos un usuario para login
         $user = factory(User::class)->create();
 
+        $response = $this->actingAs($user)->get('/users');
+        $response->assertStatus(403);
+
+        //Solo administradores pueden ver usuarios
+        $user->assignRole('Administrator');
+
         // hacemos request a la pagina users
         $response = $this->actingAs($user)->get('/users');
 
@@ -68,4 +101,84 @@ class UsersTest extends TestCase
             ->assertSeeText(htmlspecialchars($user->name, ENT_QUOTES))
             ->assertSeeText($user->phonefield);
     }
+
+    /** @test */
+    public function only_administrators_can_see_edit_users()
+    {
+        $this->withoutExceptionHandling();
+
+        // Creamos al admin
+        $user = factory(User::class)->create();
+
+        // Creamos al usuaro a ver
+        $user2see = factory(User::class)->create();
+
+        // Damos permisos al usuario
+        $user->assignRole('Administrator');
+
+        // Abrimos con permisos
+        $response = $this->actingAs($user)
+            ->get('/users/' . $user2see->id . '/edit')
+            ->assertStatus(200)
+            ->assertSee($user2see->name);
+
+    }
+
+    /** @test */
+    public function need_a_name_to_update()
+    {
+        $u2edit = factory(User::class)->create();
+
+        $responce = $this->actingAs($this->admin)
+            ->put('/users/' . $u2edit->id, $this->validFields(['name' => null]));
+
+        $responce->assertSessionHasErrors('name');
+
+    }
+
+    /** @test */
+    public function need_a_email_to_update()
+    {
+        $u2edit = factory(User::class)->create();
+
+        $responce = $this->actingAs($this->admin)
+            ->put('/users/' . $u2edit->id, $this->validFields(['email' => null]));
+
+        $responce->assertSessionHasErrors('email');
+    }
+
+    /** @test */
+    public function need_a_phone_to_update()
+    {
+        $u2edit = factory(User::class)->create();
+
+        $responce = $this->actingAs($this->admin)
+            ->put('/users/' . $u2edit->id, $this->validFields(['phonefield' => null]));
+
+        $responce->assertSessionHasErrors('phonefield');
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
